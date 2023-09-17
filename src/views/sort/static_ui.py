@@ -48,17 +48,17 @@ class UiSort:
         input_layout.setSpacing(10)
         sort_layout.addLayout(input_layout)
 
-        line_widget = InputArray(
+        input_widget = InputArray(
             selection_color=theme_class.selection,
             primary_text_color=theme_class.text_primary,
             hover_color=theme_class.hover,
             third_background_color=theme_class.third_background
         )
-        line_widget.setObjectName("line_widget")
-        line_widget.setMaximumHeight(100)
-        input_layout.addWidget(line_widget)
+        input_widget.setObjectName("input_widget")
+        input_widget.setMaximumHeight(100)
+        input_layout.addWidget(input_widget)
 
-        self.line_widget = line_widget
+        self.input_widget = input_widget
 
         # ---> Tools
         tools_layout = QtWidgets.QHBoxLayout()
@@ -68,24 +68,20 @@ class UiSort:
         tools_layout.addStretch(1)
         input_layout.addLayout(tools_layout)
 
-        length_per_item = widgets_factory.line_edit()
-        length_per_item.setObjectName("length_per_item")
-        length_per_item.setMaximumWidth(130)
-        length_per_item.setToolTip("Длина элемента списка")
-        length_per_item.setValidator(
-            QtGui.QIntValidator(1, 100000000, parent=length_per_item)
-        )
-        length_per_item.set_required(True)
-        self.length_per_item = length_per_item
+        input_type = widgets_factory.combo_box()
+        input_type.setObjectName("input_type")
+        input_type.setFixedWidth(100)
+        input_type.setToolTip("Тип элементов массива")
+        self.input_type = input_type
 
-        tools_layout.addWidget(length_per_item)
+        tools_layout.addWidget(input_type)
 
         length_line_widget = widgets_factory.line_edit()
         length_line_widget.setObjectName("length_line_widget")
         length_line_widget.setMaximumWidth(80)
         length_line_widget.setToolTip("Длина списка")
         length_line_widget.setValidator(
-            QtGui.QIntValidator(1, 1000000000, parent=length_line_widget)
+            QtGui.QIntValidator(1, 999999, parent=length_line_widget)
         )
         length_line_widget.set_required(True)
 
@@ -107,8 +103,8 @@ class UiSort:
         output_widget = widgets_factory.textarea()
         output_widget.setObjectName("output_widget")
         output_widget.setReadOnly(True)
-        output_widget.setPlaceholderText("Отсортированный список")
         sort_layout.addWidget(output_widget)
+        self.output_widget = output_widget
 
         central_layout.addLayout(sort_layout)
         self.translate_ui(sort)
@@ -125,15 +121,15 @@ class UiSort:
         self.output_header.setText(
             _translate("output_header", "Вывод")
         )
-        self.line_widget.setPlaceholderText(
-            _translate("line_widget", "Введите список")
+        self.input_widget.setPlaceholderText(
+            _translate("input_widget", "Введите список")
         )
         self.generate_button.setText(
             _translate("generate_button", "Сгенерировать")
         )
-        self.length_per_item.setPlaceholderText(
-            _translate("length_per_item", "Длина элемента")
-        )
         self.length_line_widget.setPlaceholderText(
             _translate("length_line_widget", "Длина")
+        )
+        self.output_widget.setPlaceholderText(
+            _translate("output_widget", "Отсортированный список")
         )
