@@ -1,6 +1,6 @@
 from src.config import InIConfig
 from src.models.sort import BaseSortModel
-from src.utils.sort import SortType
+from src.models.sort import SortType
 
 
 class HeapSortModel(BaseSortModel):

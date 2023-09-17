@@ -1,6 +1,6 @@
 from src.config import InIConfig
 from src.models.sort import BaseSortModel
-from src.utils.sort import SortType
+from src.models.sort import SortType
 
 
 class MergeSortModel(BaseSortModel):
@@ -17,13 +17,3 @@ class MergeSortModel(BaseSortModel):
 
     def sort(self) -> None:
         pass
-
-    def add_observer(self, observer):
-        self._mObservers.append(observer)
-
-    def remove_observer(self, observer):
-        self._mObservers.remove(observer)
-
-    def notify_observers(self):
-        for observer in self._mObservers:
-            observer.model_changed()
