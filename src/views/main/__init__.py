@@ -40,7 +40,7 @@ class MainView(QWidget, DObserver, metaclass=TSMeta):
         pass
 
     def memory_usage_tick(self):
-        self.ui.memory_usage_label.setText(f"ОЗУ: {self.model.get_cpu_usage()} МБ")
+        self.ui.memory_usage_label.setText(f"ОЗУ: {self.model.get_ram_usage()} МБ")
 
     def model_loaded(self):
         self.ui.menu_list_widget.setCurrentIndex(self.ui.menu_list_widget.model().index(0, 0))
