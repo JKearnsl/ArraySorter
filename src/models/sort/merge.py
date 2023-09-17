@@ -1,7 +1,11 @@
 from src.config import InIConfig
+from src.models.sort import BaseSortModel
+from src.utils.sort import SortType
 
 
-class SelectionSortModel:
+class MergeSortModel(BaseSortModel):
+    id: SortType = SortType.MERGE
+    title: str = 'Сортировка Слиянием'
 
     def __init__(self, config: InIConfig, theme):
 
@@ -10,6 +14,9 @@ class SelectionSortModel:
 
         # список наблюдателей
         self._mObservers = []
+
+    def sort(self) -> None:
+        pass
 
     def add_observer(self, observer):
         self._mObservers.append(observer)
