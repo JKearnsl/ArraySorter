@@ -62,9 +62,9 @@ class List(QListView):
 
 
 class ListItemWidget(QtGui.QStandardItem):
-    id: str
+    id: any
 
-    def __init__(self, title: str, _id: str = None, icon: QtGui.QIcon = None):
+    def __init__(self, title: str, _id: any = None, icon: QtGui.QIcon = None):
         super().__init__()
         self.setText(title)
         self.id = _id
