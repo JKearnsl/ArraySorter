@@ -1,4 +1,5 @@
 from PyQt6.QtWidgets import QWidget
+from apscheduler.schedulers.qt import QtScheduler
 
 from src.utils.observer import DObserver
 from src.utils.ts_meta import TSMeta
@@ -24,6 +25,10 @@ class MainView(QWidget, DObserver, metaclass=TSMeta):
             debug=self.model.config.VAR.BASE.DEBUG
         )
 
+        self.scheduler = QtScheduler()
+        self.scheduler.add_job(self.memory_usage_tick, 'interval', seconds=3)
+        self.scheduler.start()
+
         # Регистрация представлений
         self.model.add_observer(self)
 
@@ -33,6 +38,9 @@ class MainView(QWidget, DObserver, metaclass=TSMeta):
 
     def model_changed(self):
         pass
+
+    def memory_usage_tick(self):
+        self.ui.memory_usage_label.setText(f"ОЗУ: {self.model.get_cpu_usage()} МБ")
 
     def model_loaded(self):
         self.ui.menu_list_widget.setCurrentIndex(self.ui.menu_list_widget.model().index(0, 0))
@@ -54,21 +62,4 @@ class MainView(QWidget, DObserver, metaclass=TSMeta):
                     self.ui.content_layout.setCurrentWidget(widget)
                     return
 
-        if item.id == "insertion_sort":
-            self.controller.load_insertion_sort()
-        elif item.id == "selection_sort":
-            self.controller.load_selection_sort()
-        elif item.id == "exchange_sort":
-            self.controller.load_exchange_sort()
-        elif item.id == "fast_sort":
-            self.controller.load_fast_sort()
-        elif item.id == "tree_sort":
-            self.controller.load_tree_sort()
-        elif item.id == "heap_sort":
-            self.controller.load_heap_sort()
-        elif item.id == "shell_sort":
-            self.controller.load_shell_sort()
-        elif item.id == "merge_sort":
-            self.controller.load_merge_sort()
-        else:
-            raise ValueError(f"Unknown menu item: {item.id!r}")
+        self.controller.show_sort(item.id)
