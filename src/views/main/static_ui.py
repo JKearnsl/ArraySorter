@@ -1,6 +1,6 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
-from src.utils.sort import SortType
+from src.models.sort import SortType
 from src.views.widgets import WidgetsFactory, Label
 from src.views.widgets.list import ListItemWidget
 
