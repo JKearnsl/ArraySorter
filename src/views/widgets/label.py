@@ -14,3 +14,6 @@ class Label(QLabel):
         """.replace(
             "$PRIMARY_TEXT_COLOR", color,
         ))
+
+    def add_style(self, style: str):
+        self.setStyleSheet(self.styleSheet() + style)
