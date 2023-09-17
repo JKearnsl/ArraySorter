@@ -29,7 +29,7 @@ def is_theme(theme_class: type) -> bool:
         return False
 
 
-def get_themes() -> tuple[dict[str, tuple[type, str, str]], list[tuple[str, str]]]:
+def get_themes() -> tuple[dict[str, tuple[type[BaseTheme], str, str]], list[tuple[str, str]]]:
     items = os.listdir(__FOLDER)
 
     normal_themes = dict()

@@ -1,10 +1,9 @@
-import configparser
-
-from src.config import Config, InIConfig
+from src.config import InIConfig
+from src.models import BaseModel
 from src.utils import theme as theme_utils
 
 
-class SettingsModel:
+class SettingsModel(BaseModel):
 
     def __init__(self, config: InIConfig, theme):
 
