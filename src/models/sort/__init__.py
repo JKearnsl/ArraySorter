@@ -11,7 +11,8 @@ class InputType(int, Enum):
     INT64 = 2 ** 64
 
 
-class SortType(str, Enum):
+class MenuItem(str, Enum):
+    # Sort
     EXCHANGE: str = "exchange"
     FAST: str = "fast"
     HEAP: str = "heap"
@@ -21,9 +22,13 @@ class SortType(str, Enum):
     SHELL: str = "shell"
     TREE: str = "tree"
 
+    # Test
+    TEST: str = "test"
+
+
 
 class BaseSortModel(BaseModel):
-    id: SortType
+    id: MenuItem
     title: str
 
     _length: int = 10

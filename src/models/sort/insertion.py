@@ -1,10 +1,10 @@
 from src.config import InIConfig
 from src.models.sort import BaseSortModel
-from src.models.sort import SortType
+from src.models.sort import MenuItem
 
 
 class InsertionSortModel(BaseSortModel):
-    id: SortType = SortType.INSERTION
+    id: MenuItem = MenuItem.INSERTION
     title: str = 'Сортировка Вставками'
 
     def __init__(self, config: InIConfig, theme):

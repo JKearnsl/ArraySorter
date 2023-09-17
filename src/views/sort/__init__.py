@@ -3,7 +3,7 @@ from typing import TypeVar
 from PyQt6.QtWidgets import QWidget
 
 from src.utils.observer import DObserver
-from src.models.sort import SortType, InputType
+from src.models.sort import MenuItem, InputType
 from src.utils.ts_meta import TSMeta
 from src.views.sort.static_ui import UiSort
 from src.models.sort import BaseSortModel
@@ -12,7 +12,7 @@ ViewWidget = TypeVar('ViewWidget', bound=QWidget)
 
 
 class SortView(QWidget, DObserver, metaclass=TSMeta):
-    id: SortType
+    id: MenuItem
 
     def __init__(self, controller, model: BaseSortModel, widgets_factory, parent: ViewWidget):
         super().__init__(parent)

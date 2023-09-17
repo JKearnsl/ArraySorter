@@ -1,10 +1,10 @@
 from src.config import InIConfig
 from src.models.sort import BaseSortModel
-from src.models.sort import SortType
+from src.models.sort import MenuItem
 
 
 class ExchangeSortModel(BaseSortModel):
-    id: SortType = SortType.EXCHANGE
+    id: MenuItem = MenuItem.EXCHANGE
     title: str = 'Сортировка Обменом'
 
     def __init__(self, config: InIConfig, theme):

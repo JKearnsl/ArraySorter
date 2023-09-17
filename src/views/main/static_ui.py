@@ -1,6 +1,6 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
-from src.models.sort import SortType
+from src.models.sort import MenuItem
 from src.views.widgets import WidgetsFactory, Label
 from src.views.widgets.list import ListItemWidget
 
@@ -124,14 +124,15 @@ class UiMainWindow:
 
         self.menu_select_model = menu_list_widget.selectionModel()
 
-        self.menu_item_insertion_sort = ListItemWidget("Menu item 1", SortType.INSERTION)
-        self.menu_item_selection_sort = ListItemWidget("Menu item 2", SortType.SELECT)
-        self.menu_item_exchange_sort = ListItemWidget("Menu item 3", SortType.EXCHANGE)
-        self.menu_item_fast_sort = ListItemWidget("Menu item 4", SortType.FAST)
-        self.menu_item_tree_sort = ListItemWidget("Menu item 5", SortType.TREE)
-        self.menu_item_heap_sort = ListItemWidget("Menu item 6", SortType.HEAP)
-        self.menu_item_shell_sort = ListItemWidget("Menu item 7", SortType.SHELL)
-        self.menu_item_merge_sort = ListItemWidget("Menu item 8", SortType.MERGE)
+        self.menu_item_insertion_sort = ListItemWidget("Menu item 1", MenuItem.INSERTION)
+        self.menu_item_selection_sort = ListItemWidget("Menu item 2", MenuItem.SELECT)
+        self.menu_item_exchange_sort = ListItemWidget("Menu item 3", MenuItem.EXCHANGE)
+        self.menu_item_fast_sort = ListItemWidget("Menu item 4", MenuItem.FAST)
+        self.menu_item_tree_sort = ListItemWidget("Menu item 5", MenuItem.TREE)
+        self.menu_item_heap_sort = ListItemWidget("Menu item 6", MenuItem.HEAP)
+        self.menu_item_shell_sort = ListItemWidget("Menu item 7", MenuItem.SHELL)
+        self.menu_item_merge_sort = ListItemWidget("Menu item 8", MenuItem.MERGE)
+        self.menu_item_test = ListItemWidget("Menu item 9", MenuItem.TEST)
 
 
         menu_list_model.appendRow(self.menu_item_insertion_sort)
@@ -142,6 +143,7 @@ class UiMainWindow:
         menu_list_model.appendRow(self.menu_item_heap_sort)
         menu_list_model.appendRow(self.menu_item_shell_sort)
         menu_list_model.appendRow(self.menu_item_merge_sort)
+        menu_list_model.appendRow(self.menu_item_test)
 
         menu_layout.addWidget(menu_list_widget)
         self.menu_list_widget = menu_list_widget
@@ -214,3 +216,4 @@ class UiMainWindow:
         self.menu_item_heap_sort.setText(_translate("menu_item_heap_sort", "Пирамидальная"))
         self.menu_item_shell_sort.setText(_translate("menu_item_shell_sort", "Шелла"))
         self.menu_item_merge_sort.setText(_translate("menu_item_merge_sort", "Слиянием"))
+        self.menu_item_test.setText(_translate("menu_item_test", "Тест"))

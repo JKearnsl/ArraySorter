@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QWidget
 from apscheduler.schedulers.qt import QtScheduler
 
+from src.models.sort import MenuItem
 from src.utils.observer import DObserver
 from src.utils.ts_meta import TSMeta
 from src.views.main.static_ui import UiMainWindow
@@ -62,4 +63,7 @@ class MainView(QWidget, DObserver, metaclass=TSMeta):
                     self.ui.content_layout.setCurrentWidget(widget)
                     return
 
-        self.controller.show_sort(item.id)
+        if item.id == MenuItem.TEST:
+            self.controller.show_test()
+        else:
+            self.controller.show_sort(item.id)
