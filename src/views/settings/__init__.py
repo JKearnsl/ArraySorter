@@ -1,12 +1,11 @@
 from typing import TypeVar
 
-from PyQt6 import QtCore
-from PyQt6.QtWidgets import QWidget, QDialog
+from PyQt6.QtWidgets import QWidget
 
+from src.models.settings import SettingsModel
 from src.utils.observer import DObserver
 from src.utils.ts_meta import TSMeta
 from src.views.settings.static_ui import UiSettings
-from src.models.settings import SettingsModel
 from src.views.widgets import Dialog
 
 ViewWidget = TypeVar('ViewWidget', bound=QWidget)
@@ -26,9 +25,6 @@ class SettingsView(Dialog, DObserver, metaclass=TSMeta):
         self.controller = controller
         self.model = model
         self.widgets_factory = widgets_factory
-
-        # parent.ui.content_layout.addWidget(self)
-        # parent.ui.content_layout.setCurrentWidget(self)
 
         self.ui = UiSettings()
         self.ui.setup_ui(self, self.model.theme[0], widgets_factory)
@@ -66,5 +62,3 @@ class SettingsView(Dialog, DObserver, metaclass=TSMeta):
 
         self.controller.change_theme(new_theme[0].__title__)
         self.controller.reboot()
-
-
