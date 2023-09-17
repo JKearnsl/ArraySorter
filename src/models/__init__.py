@@ -1,8 +1,10 @@
 from abc import ABC
 
+from src.themes.base import BaseTheme
+
 
 class BaseModel(ABC):
-    theme: tuple[type, str, str]
+    theme: tuple[type[BaseTheme], str, str]
 
     _mObservers = []
 
