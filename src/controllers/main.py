@@ -12,7 +12,7 @@ from src.models.sort.tree import TreeSortModel
 from src.models.settings import SettingsModel
 from src.models.sort.insertion import InsertionSortModel
 from src.models.main import MainModel
-from src.utils.sort import SortType
+from src.models.sort import SortType
 from src.views.main import MainView
 
 
