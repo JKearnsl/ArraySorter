@@ -17,6 +17,7 @@ from src.views.widgets.label import Label
 from src.views.widgets.line_edit import LineEdit
 from src.views.widgets.list import List
 from src.views.widgets.spin_box import SpinBox
+from src.views.widgets.textarea import TextArea
 
 QWidgetLike = TypeVar("QWidgetLike", bound=QWidget)
 
@@ -127,6 +128,15 @@ class WidgetsFactory:
 
     def line_edit(self, parent: QWidgetLike = None) -> LineEdit:
         return LineEdit(
+            selection_color=self.theme.selection,
+            primary_text_color=self.theme.text_primary,
+            hover_color=self.theme.hover,
+            third_background_color=self.theme.third_background,
+            parent=parent
+        )
+
+    def textarea(self, parent: QWidgetLike = None) -> TextArea:
+        return TextArea(
             selection_color=self.theme.selection,
             primary_text_color=self.theme.text_primary,
             hover_color=self.theme.hover,
