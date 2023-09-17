@@ -1,6 +1,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
-from src.views.widgets import WidgetsFactory
+from src.utils.sort import SortType
+from src.views.widgets import WidgetsFactory, Label
 from src.views.widgets.list import ListItemWidget
 
 
@@ -123,14 +124,14 @@ class UiMainWindow:
 
         self.menu_select_model = menu_list_widget.selectionModel()
 
-        self.menu_item_insertion_sort = ListItemWidget("Menu item 1", "insertion_sort")
-        self.menu_item_selection_sort = ListItemWidget("Menu item 2", "selection_sort")
-        self.menu_item_exchange_sort = ListItemWidget("Menu item 3", "exchange_sort")
-        self.menu_item_fast_sort = ListItemWidget("Menu item 4", "fast_sort")
-        self.menu_item_tree_sort = ListItemWidget("Menu item 5", "tree_sort")
-        self.menu_item_heap_sort = ListItemWidget("Menu item 6", "heap_sort")
-        self.menu_item_shell_sort = ListItemWidget("Menu item 7", "shell_sort")
-        self.menu_item_merge_sort = ListItemWidget("Menu item 8", "merge_sort")
+        self.menu_item_insertion_sort = ListItemWidget("Menu item 1", SortType.INSERTION)
+        self.menu_item_selection_sort = ListItemWidget("Menu item 2", SortType.SELECT)
+        self.menu_item_exchange_sort = ListItemWidget("Menu item 3", SortType.EXCHANGE)
+        self.menu_item_fast_sort = ListItemWidget("Menu item 4", SortType.FAST)
+        self.menu_item_tree_sort = ListItemWidget("Menu item 5", SortType.TREE)
+        self.menu_item_heap_sort = ListItemWidget("Menu item 6", SortType.HEAP)
+        self.menu_item_shell_sort = ListItemWidget("Menu item 7", SortType.SHELL)
+        self.menu_item_merge_sort = ListItemWidget("Menu item 8", SortType.MERGE)
 
 
         menu_list_model.appendRow(self.menu_item_insertion_sort)
@@ -165,6 +166,17 @@ class UiMainWindow:
         """.replace(
             "$HOVER", theme_class.hover
         ))
+
+        memory_usage_label = Label(theme_class.text_secondary)
+        memory_usage_label.setObjectName("memory_usage_label")
+        memory_usage_label.add_style("""
+            QLabel#memory_usage_label {
+                font-size: 12px;
+                font-weight: bold;
+                }
+        """)
+        self.memory_usage_label = memory_usage_label
+
         self.menu_settings_button = menu_settings_button
         menu_tool_layout.addItem(
             QtWidgets.QSpacerItem(10, 0, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
@@ -172,6 +184,10 @@ class UiMainWindow:
         menu_tool_layout.addWidget(menu_settings_button)
         menu_tool_layout.addItem(
             QtWidgets.QSpacerItem(0, 0, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
+        )
+        menu_tool_layout.addWidget(memory_usage_label)
+        menu_tool_layout.addItem(
+            QtWidgets.QSpacerItem(10, 0, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         )
         menu_layout.addLayout(menu_tool_layout)
         menu_layout.addItem(
@@ -194,7 +210,7 @@ class UiMainWindow:
         self.menu_item_selection_sort.setText(_translate("menu_item_selection_sort", "Выбором"))
         self.menu_item_exchange_sort.setText(_translate("menu_item_exchange_sort", "Обменом"))
         self.menu_item_fast_sort.setText(_translate("menu_item_fast_sort", "Быстрая"))
-        self.menu_item_tree_sort.setText(_translate("menu_item_tree_sort", "Деревья"))
+        self.menu_item_tree_sort.setText(_translate("menu_item_tree_sort", "Деревом"))
         self.menu_item_heap_sort.setText(_translate("menu_item_heap_sort", "Пирамидальная"))
         self.menu_item_shell_sort.setText(_translate("menu_item_shell_sort", "Шелла"))
         self.menu_item_merge_sort.setText(_translate("menu_item_merge_sort", "Слиянием"))
