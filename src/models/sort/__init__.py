@@ -1,18 +1,68 @@
-from abc import abstractmethod, ABC
+from abc import abstractmethod
+from enum import Enum
+
+import numpy as np
 
 from src.models import BaseModel
-from src.utils.sort import SortType
+
+
+class InputType(int, Enum):
+    INT32 = 2 ** 32
+    INT64 = 2 ** 64
+
+
+class SortType(str, Enum):
+    EXCHANGE: str = "exchange"
+    FAST: str = "fast"
+    HEAP: str = "heap"
+    INSERTION: str = "insertion"
+    MERGE: str = "merge"
+    SELECT: str = "select"
+    SHELL: str = "shell"
+    TREE: str = "tree"
 
 
 class BaseSortModel(BaseModel):
     id: SortType
     title: str
 
-    def set_list(self, string_list: str) -> None:
-        pass
+    _length: int = 10
+    _input_type: InputType = InputType.INT32
+    _input_list: list = []
 
-    def gen_list(self, count_of_elements: int) -> None:
-        pass
+    def gen_list(self) -> None:
+        value = self._input_type.value // 2
+        self._input_list = list(np.random.randint(-value, value, self.length))
+        self.notify_observers()
+
+    @property
+    def length(self) -> int:
+        return self._length
+
+    @length.setter
+    def length(self, value: int) -> None:
+        self._length = value
+        self.notify_observers()
+
+    @property
+    def input_type(self) -> int:
+        return self._input_type
+
+    @input_type.setter
+    def input_type(self, value: InputType) -> None:
+        self._input_type = value
+        self.notify_observers()
+
+    @property
+    def input_list(self) -> list:
+        return self._input_list
+
+    @input_list.setter
+    def input_list(self, value: list[int]) -> None:
+        self._input_list = value
+        self._length = len(value)
+        self.sort()
+        self.notify_observers()
 
     @abstractmethod
     def sort(self) -> None:
