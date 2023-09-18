@@ -168,6 +168,7 @@ class UiMainWindow:
         """.replace(
             "$HOVER", theme_class.hover
         ))
+        self.menu_settings_button = menu_settings_button
 
         memory_usage_label = Label(theme_class.text_secondary)
         memory_usage_label.setObjectName("memory_usage_label")
@@ -179,7 +180,62 @@ class UiMainWindow:
         """)
         self.memory_usage_label = memory_usage_label
 
-        self.menu_settings_button = menu_settings_button
+        # Context menu
+        context_menu = QtWidgets.QMenu(main_window)
+        context_menu.setObjectName("context_menu")
+        context_menu.setStyleSheet("""
+            QMenuBar {
+                background-color: transparent;
+            }
+
+            QMenuBar::item {
+                color : $PRIMARY_COLOR;
+                margin-top:4px;
+                spacing: 3px;
+                padding: 1px 10px;
+                background: transparent;
+                border-radius: 4px;
+            }
+
+
+            QMenuBar::item:selected {
+                background: $BG2;
+            }
+
+            QMenuBar::item:pressed {
+                background: $SELECTED_COLOR;
+                color: #FFFFFF;
+            }
+
+            QMenu {
+                background-color: $BG3;
+                border: 1px solid $HOVER_COLOR;
+                border-top-right-radius: 5px;
+                border-top-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+            QMenu::item {
+                color: $PRIMARY_COLOR;
+                padding: 5px 20px;
+            }
+            QMenu::item:selected {
+                background-color: $HOVER_COLOR;
+            } 
+                """.replace(
+            "$PRIMARY_COLOR", theme_class.text_primary
+        ).replace(
+            "$BG2", theme_class.second_background
+        ).replace(
+            "$SELECTED_COLOR", theme_class.selection
+        ).replace(
+            "$BG3", theme_class.third_background
+        ).replace(
+            "$HOVER_COLOR", theme_class.hover
+        ))
+        self.settings_item = context_menu.addAction("Настойки")
+        self.about_item = context_menu.addAction("О программе")
+        self.context_menu = context_menu
+
         menu_tool_layout.addItem(
             QtWidgets.QSpacerItem(10, 0, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         )
