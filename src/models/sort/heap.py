@@ -6,6 +6,7 @@ from src.models.sort import MenuItem
 class HeapSortModel(BaseSortModel):
     id: MenuItem = MenuItem.HEAP
     title: str = 'Пирамидальная Сортировка'
+    complexity: str = 'O(n^2)'
 
     def __init__(self, config: InIConfig, theme):
 

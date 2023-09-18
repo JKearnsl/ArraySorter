@@ -26,14 +26,15 @@ class MenuItem(str, Enum):
     TEST: str = "test"
 
 
-
 class BaseSortModel(BaseModel):
     id: MenuItem
     title: str
+    complexity: str
 
     _length: int = 10
     _input_type: InputType = InputType.INT32
     _input_list: list = []
+    _output_list: list = []
 
     def gen_list(self) -> None:
         value = self._input_type.value // 2
@@ -59,6 +60,15 @@ class BaseSortModel(BaseModel):
         self.notify_observers()
 
     @property
+    def output_list(self) -> list:
+        return self._output_list
+
+    @output_list.setter
+    def output_list(self, value: list[int]) -> None:
+        self._output_list = value
+        self.notify_observers()
+
+    @property
     def input_list(self) -> list:
         return self._input_list
 
@@ -67,7 +77,6 @@ class BaseSortModel(BaseModel):
         self._input_list = value
         self._length = len(value)
         self.sort()
-        self.notify_observers()
 
     @abstractmethod
     def sort(self) -> None:

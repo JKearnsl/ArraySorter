@@ -6,6 +6,7 @@ from src.models.sort import MenuItem
 class TreeSortModel(BaseSortModel):
     id: MenuItem = MenuItem.TREE
     title: str = 'Сортировка Деревом'
+    complexity: str = 'O(n^2)'
 
     def __init__(self, config: InIConfig, theme):
 

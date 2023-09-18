@@ -31,10 +31,23 @@ class UiSort:
         sort_layout.setContentsMargins(0, 0, 0, 0)
         sort_layout.setSpacing(10)
 
+        # Header
+        header_layout = QtWidgets.QHBoxLayout()
+        header_layout.setContentsMargins(0, 0, 0, 0)
+        header_layout.setSpacing(10)
+        central_layout.addLayout(header_layout)
+
         sort_header = widgets_factory.heading2(parent=sort)
         sort_header.setObjectName("sort_header")
-        sort_layout.addWidget(sort_header)
+        header_layout.addWidget(sort_header)
         self.sort_header = sort_header
+
+        header_layout.addStretch(1)
+
+        sort_complexity = widgets_factory.heading4(parent=sort)
+        sort_complexity.setObjectName("sort_complexity")
+        header_layout.addWidget(sort_complexity)
+        self.sort_complexity = sort_complexity
 
         # Input
 

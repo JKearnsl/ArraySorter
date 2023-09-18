@@ -6,6 +6,7 @@ from src.models.sort import MenuItem
 class MergeSortModel(BaseSortModel):
     id: MenuItem = MenuItem.MERGE
     title: str = 'Сортировка Слиянием'
+    complexity: str = 'O(n^2)'
 
     def __init__(self, config: InIConfig, theme):
 

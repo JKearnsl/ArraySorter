@@ -6,6 +6,7 @@ from src.models.sort import MenuItem
 class FastSortModel(BaseSortModel):
     id: MenuItem = MenuItem.FAST
     title: str = 'Быстрая Сортировка'
+    complexity: str = 'O(n^2)'
 
     def __init__(self, config: InIConfig, theme):
 

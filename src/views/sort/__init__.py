@@ -28,6 +28,7 @@ class SortView(QWidget, DObserver, metaclass=TSMeta):
         self.ui.setup_ui(self, self.model.theme[0], widgets_factory)
 
         self.ui.sort_header.setText(self.model.title)
+        self.ui.sort_complexity.setText(self.model.complexity)
 
         # Регистрация представлений
         self.model.add_observer(self)
@@ -43,6 +44,7 @@ class SortView(QWidget, DObserver, metaclass=TSMeta):
             self.ui.input_widget.blockSignals(True)
             self.ui.input_widget.set_array(self.model.input_list)
             self.ui.input_widget.blockSignals(False)
+            self.ui.output_widget.setPlainText(", ".join(self.model.output_list))
 
         self.ui.length_line_widget.blockSignals(True)
         self.ui.length_line_widget.setText(str(self.model.length))
@@ -72,6 +74,7 @@ class SortView(QWidget, DObserver, metaclass=TSMeta):
 
     def generate_clicked(self):
         self.model.gen_list()
+        self.input_changed()
 
     def model_loaded(self):
         self.model_changed()
