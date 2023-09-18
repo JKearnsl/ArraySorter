@@ -40,6 +40,7 @@ class BaseSortModel(BaseModel):
         value = self._input_type.value // 2
         self._input_list = list(np.random.randint(-value, value, self.length))
         self.notify_observers()
+        self.sort()
 
     @property
     def length(self) -> int:
