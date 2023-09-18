@@ -44,6 +44,26 @@ class Table(QTableWidget):
                 background: $HOVER;
             }
             
+            QScrollBar:vertical {
+                border: none;
+                background: $BG3;
+                width: 10px;
+                margin: 0px 0px 0px 0px;
+            }
+            QScrollBar::handle:vertical {
+                background: $HOVER;
+                border-radius: 2px;
+                min-height: 0px;
+            }
+            QScrollBar::add-line:vertical {
+                border: none;
+                background: none;
+            }
+            QScrollBar::sub-line:vertical {
+                border: none;
+                background: none;
+            }
+            
         """.replace(
             "$SELECTION", selection_color
         ).replace(

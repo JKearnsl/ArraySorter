@@ -19,6 +19,11 @@ class Button(QPushButton):
             QPushButton:pressed {
                 background-color: $BG3;
             }
+            
+            QPushButton:disabled {
+                background-color: $HOVER;
+                color: $TEXT;
+            }
         """.replace(
             "$HOVER", hover_color,
         ).replace(
