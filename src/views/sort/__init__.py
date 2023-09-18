@@ -75,7 +75,6 @@ class SortView(QWidget, DObserver, metaclass=TSMeta):
 
     def generate_clicked(self):
         self.model.gen_list()
-        self.input_changed()
 
     def model_loaded(self):
         self.model_changed()
