@@ -55,7 +55,7 @@ class UiTest:
         table.setRowCount(20)
 
         table.setHorizontalHeaderLabels([
-            "Тип", "Время работы", "Последовательность", "Случай"
+            "Тип", "Время работы", "Кол-во эл.", "Случай"
         ])
 
         test_layout.addWidget(table)
