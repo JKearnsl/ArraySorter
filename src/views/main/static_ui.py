@@ -16,7 +16,7 @@ class UiMainWindow:
     ):
         main_window.setObjectName("main_window")
         main_window.setWindowTitle(app_name)
-        main_window.resize(800, 600)
+        main_window.resize(830, 600)
         main_window.setStyleSheet("""
             QWidget#main_window {
                 background-color: $BG1;
