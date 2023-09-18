@@ -101,7 +101,7 @@ class TestView(QWidget, DObserver, metaclass=TSMeta):
 
         index = 0
         for model in models:
-            self.ui.process_label.setText(f"{model.id.value} [{index + 1}/{len(models)}]")
+            self.ui.process_label.setText(f"{model.id.value} [{models.index(model) + 1}/{len(models)}]")
             for count, sample in samples.items():
                 _ = model(config=self.model.config, theme=self.model.theme)
 
