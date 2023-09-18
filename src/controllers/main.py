@@ -9,9 +9,9 @@ from src.models.sort.merge import MergeSortModel
 from src.models.sort.selection import SelectionSortModel
 from src.models.sort.shell import ShellSortModel
 from src.models.sort.tree import TreeSortModel
+from src.models.sort.insertion import InsertionSortModel
 
 from src.models.settings import SettingsModel
-from src.models.sort.insertion import InsertionSortModel
 from src.models.main import MainModel
 from src.models.sort import MenuItem
 from src.models.test import TestModel
