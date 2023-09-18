@@ -29,7 +29,7 @@ class MainView(QWidget, DObserver, metaclass=TSMeta):
         )
 
         self.scheduler = QtScheduler()
-        self.scheduler.add_job(self.memory_usage_tick, 'interval', seconds=3)
+        self.scheduler.add_job(self.memory_usage_tick, 'interval', seconds=2)
         self.scheduler.start()
 
         # Регистрация представлений
@@ -115,9 +115,9 @@ class MainView(QWidget, DObserver, metaclass=TSMeta):
         text_widget.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignTop)
         text_widget.setWordWrap(True)
         text_widget.setText(
-            f"### {self.model.config.VAR.BASE.APP_NAME} {self.model.config.VAR.VERSION}\n\n"
+            f"### {self.model.config.VAR.BASE.APP_NAME} | {self.model.config.VAR.VERSION}\n\n"
             "Программа разработана в рамках лабораторной работы\n\n\n"
-            "Разработчик: <a href='https://github.com/JKearnsl'>JKearnsl</a>"
+            "Разработчик: <a href='https://github.com/JKearnsl'>JKearnsl</a> 2023"
         )
         central_layout.addWidget(text_widget)
         modal.exec()
