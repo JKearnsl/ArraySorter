@@ -117,7 +117,8 @@ class MainView(QWidget, DObserver, metaclass=TSMeta):
         text_widget.setText(
             f"### {self.model.config.VAR.BASE.APP_NAME} | {self.model.config.VAR.VERSION}\n\n"
             "Программа разработана в рамках лабораторной работы\n\n\n"
-            "Разработчик: <a href='https://github.com/JKearnsl'>JKearnsl</a> 2023"
+            "Разработчик: "
+            f"<a href='{self.model.config.VAR.BASE.CONTACT.URL}'>{self.model.config.VAR.BASE.CONTACT.NAME}</a> 2023"
         )
         central_layout.addWidget(text_widget)
         modal.exec()
