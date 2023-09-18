@@ -44,7 +44,8 @@ class SortView(QWidget, DObserver, metaclass=TSMeta):
             self.ui.input_widget.blockSignals(True)
             self.ui.input_widget.set_array(self.model.input_list)
             self.ui.input_widget.blockSignals(False)
-            self.ui.output_widget.setPlainText(", ".join(self.model.output_list))
+
+        self.ui.output_widget.setPlainText(", ".join(map(str, self.model.output_list)))
 
         self.ui.length_line_widget.blockSignals(True)
         self.ui.length_line_widget.setText(str(self.model.length))
