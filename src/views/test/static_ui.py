@@ -42,6 +42,23 @@ class UiTest:
 
         th_layout.addStretch(1)
 
+        process_label = widgets_factory.label(parent=test)
+        process_label.setObjectName("process_label")
+        process_label.setText("")
+        process_label.add_style("""
+            QLabel#process_label {
+                color: $TEXT_SECONDARY;
+                font-size: 12px;
+                font-weight: bold;
+                margin: 5px;
+            }
+        """.replace(
+            "$TEXT_SECONDARY", theme_class.text_secondary
+        ))
+        process_label.setVisible(False)
+        self.process_label = process_label
+        th_layout.addWidget(process_label)
+
         start_button = widgets_factory.button(parent=test)
         start_button.setObjectName("start_button")
         start_button.setMinimumWidth(100)
@@ -52,10 +69,10 @@ class UiTest:
         table = widgets_factory.table(parent=test)
         table.setObjectName("table")
         table.setColumnCount(4)
-        table.setRowCount(20)
+        table.setRowCount(15)
 
         table.setHorizontalHeaderLabels([
-            "Тип", "Время работы", "Кол-во эл.", "Случай"
+            "Тип", "Время работы, сек", "Кол-во эл.", "Подлинность"
         ])
 
         test_layout.addWidget(table)
