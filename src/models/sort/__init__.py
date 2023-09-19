@@ -1,7 +1,7 @@
+import random
 from abc import abstractmethod
 from enum import Enum
 
-import numpy as np
 
 from src.models import BaseModel
 
@@ -38,7 +38,7 @@ class BaseSortModel(BaseModel):
 
     def gen_list(self) -> None:
         value = self._input_type.value // 2
-        self._input_list = list(np.random.randint(-value, value, self.length))
+        self._input_list = list([random.randint(-value, value) for _ in range(self._length)])
         self.notify_observers()
         self.sort()
 
