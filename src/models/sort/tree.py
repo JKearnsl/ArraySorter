@@ -43,7 +43,7 @@ class TreeNode:
 class TreeSortModel(BaseSortModel):
     id: MenuItem = MenuItem.TREE
     title: str = 'Сортировка Деревом'
-    complexity: str = 'O(n^2)'
+    complexity: str = 'O(nlog(n))'
 
     def __init__(self, config: InIConfig, theme):
 
